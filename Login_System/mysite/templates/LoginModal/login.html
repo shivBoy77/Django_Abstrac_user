@@ -1,0 +1,58 @@
+{% extends 'LoginModal/base.html' %}
+{% load static %}
+{% block content %}
+  <section class="myform-area">
+              <div class="container">
+                  <div class="row justify-content-center">
+                      <div class="col-lg-8">
+                            {% for field in login_form %}
+                                <p>
+                                {% for error in field.errors %}
+                                <p style="color: red">{{ error }}</p>
+                                {% endfor %}
+                                </p>
+                            {% endfor %}
+                            {% if login_form.non_field_errors %}
+                                 <div style="color: #721c24; background: #f8d7da; text-align:center; border-radius: 5px; border-color: #f5c6cb; font-size:16px; margin:20px; padding:1px;">
+				                <p>{{login_form.non_field_errors}}</p>
+				                </div>
+                                {% comment %} <div class="alert alert-danger">
+                                    <a class="close" href="#" data-dismiss="alert">×</a>
+                                {{ login_form.non_field_errors }}
+                                </div> {% endcomment %}
+                            {% endif %} 
+                          <div class="form-area login-form">
+                              <div class="form-content">
+                                  <h2>Login</h2>
+                                  <p>We are working on this.</p>
+                                  <ul>
+                                      <li><a href="#" class="facebook"><i class="fa fa-facebook-f"></i><span>facebook</span></a></li>
+                                      <li><a href="#" class="twitter"><i class="fa fa-twitter"></i><span>twitter</span></a></li>
+                                      <li><a href="#" class="google"><i class="fa fa-google-plus"></i><span>google+</span></a></li>
+                                      <li><a href="#" class="github"><i class="fa fa-github"></i><span>github</span></a></li>
+                                  </ul>
+                              </div>
+                              <div class="form-input">
+                                  <h2>Login Form</h2>
+                                  <form method="POST"> {% csrf_token %}
+                                      <div class="form-group">
+                                          <input type="email"  id="" name="email" required>
+                                          <label>Email</label>
+                                      </div>
+                                      <div class="form-group">
+                                          <input type="password" id="" name="password" required>
+                                          <label>password</label>
+                                      </div>
+                                      <div class="myform-button">
+                                          <button class="myform-btn" type="submit">Login</button>
+                                      </div>
+                                  </form>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </section>
+{% endblock content %}
+
+

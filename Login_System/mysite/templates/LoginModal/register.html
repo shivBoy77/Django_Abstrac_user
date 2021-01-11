@@ -1,0 +1,77 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<meta http-equiv="x-ua-compatible" content="ie=edge">
+	<title>Modal For Signin & Signup</title>
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.11.2/css/all.css">
+	<link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="{% static 'style2.css' %}" type="text/css">
+<head>
+<body>
+  <section class="myform-area">
+              <div class="container">
+                  <div class="row justify-content-center">
+                      <div class="col-lg-8">
+                            {% for field in registeration_form %}
+                                <p>
+                                {% for error in field.errors %}
+                                <div class="alert alert-danger">
+                                    {{ error }}
+                                    </div>
+                                {% endfor %}
+                                </p>
+                            {% endfor %}
+                            {% if login_form.non_field_errors %}
+                                <div style="color: red">
+                                <p>{{login_form.non_field_errors}}</p>
+                                </div>
+                            {% endif %}
+                          <div class="form-area login-form">
+                              <div class="form-content">
+                                  <h2>Register</h2>
+                                  <p>We are working on this technolgoy please consider regiseration with email.</p>
+                                  <ul>
+                                      <li><a href="#" class="facebook"><i class="fa fa-facebook-f"></i><span>facebook</span></a></li>
+                                      <li><a href="#" class="twitter"><i class="fa fa-twitter"></i><span>twitter</span></a></li>
+                                      <li><a href="#" class="google"><i class="fa fa-google-plus"></i><span>google+</span></a></li>
+                                      <li><a href="#" class="github"><i class="fa fa-github"></i><span>github</span></a></li>
+                                  </ul>
+                              </div>
+                              <div class="form-input">
+                                  <h2>Register Form</h2>
+                                  <form method="POST"> {% csrf_token %}
+                                      <div class="form-group">
+                                          <input type="text"  id="" name="username" required>
+                                          <label>User Name</label>
+                                      </div>
+                                      <div class="form-group">
+                                          <input type="email"  id="" name="email" required>
+                                          <label>Email</label>
+                                      </div>
+                                      <div class="form-group">
+                                          <input type="password" id="" name="password1" required>
+                                          <label>Password</label>
+                                      </div>
+                                      
+                                      <div class="form-group">
+                                          <input type="password" id="" name="password2" required>
+                                          <label>Confirm Password</label>
+                                      </div>
+                                      <div class="myform-button">
+                                          <button class="myform-btn" type="submit">Register</button>
+                                      </div>
+                                  </form>
+                              </div>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </section>
+
+</body>
+</html>
